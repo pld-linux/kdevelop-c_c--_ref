@@ -1,5 +1,5 @@
 Summary:	KDevelop-specific C and C++ reference HTML files
-Summary(pl):	Dokumentacja C i C++ w HTML dla KDevelopa
+Summary(pl):	Dokumentacja C i C++ w HTML-u dla KDevelopa
 Name:		kdevelop-c_c++_ref
 Version:	2.0.2
 Release:	1
