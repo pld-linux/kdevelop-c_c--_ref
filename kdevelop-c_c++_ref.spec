@@ -3,16 +3,17 @@ Summary(pl):	Dokumentacja C i C++ w HTML dla KDevelopa
 Name:		kdevelop-c_c++_ref
 Version:	2.0.2
 Release:	1
+Epoch:		0
 License:	GPL
 Group:		Documentation
-Vendor:		Sandy Meier <smeier@rz.uni-potsdam.de>
-Source0:	ftp://ftp.ee.fhm.edu/pub/unix/ide/KDevelop/c_cpp_reference-%{version}.tar.gz
-# Source0-md5:	b096b1a6a69bdbcb8072d6ce2e3833c1
-URL:		http://www.cs.uni-potsdam.de/~smeier/kdevelop/
+Source0:	ftp://ftp.ee.fhm.edu/pub/unix/ide/KDevelop/c_cpp_reference-%{version}.tar.bz2
+# Source0-md5:	3b9c51d73d2622ab51ae9d109c38bd61
+URL:		http://www.kdevelop.org
+BuildRequires:	autoconf, automake, code2html
 Requires:	kdevelop
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define         _htmldir        /usr/share/doc/kde/HTML
+%define	__code2html	/usr/bin/code2html
 
 %description
 KDevelop is an easy to use IDE (Intergrated Development Enviroment)
@@ -35,17 +36,44 @@ zosta³y dostosowane do u¿ytku z kdevelopem.
 %setup -q -n c_cpp_reference-%{version}
 
 %build
-kde_htmldir="%{_htmldir}"; export kde_htmldir
+rm -f missing
+%{__aclocal}
+%{__autoconf}
+%{__automake}
 %configure
 %{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
-%{__make} install DESTDIR=$RPM_BUILD_ROOT
+
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT
+install -d $RPM_BUILD_ROOT%{_docdir}/kde
+mv $RPM_BUILD_ROOT%{_docdir}/HTML $RPM_BUILD_ROOT%{_docdir}/kde/
+
+cd $RPM_BUILD_ROOT%{_docdir}/kde/HTML/en/kdevelop/reference
+ for a in `find . -type f -name "*.htm*"`
+ do 
+	%{__perl} -pi -e 's/(href=\".*\.c)\"/$1\.html\"/i;' $a
+ 	%{__perl} -pi -e 's/(href=\".*\.cc)\"/$1\.html\"/i;' $a
+ done
+ for a in `find . -type f -name "*.c"`
+ do
+ 	%{__code2html} $a $a.html
+	rm -f $a
+ done
+ for a in `find . -type f -name "*.cc"`
+ do
+	%{__code2html} $a $a.html
+	rm -f $a
+ done
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%files
+%files 
 %defattr(644,root,root,755)
-%{_htmldir}/en/kdevelop/*
+%doc AUTHORS INSTALL
+%{_docdir}/kde/HTML/en/kdevelop/reference/C/*
+%{_docdir}/kde/HTML/en/kdevelop/reference/CPLUSPLUS
+%{_docdir}/kde/HTML/en/kdevelop/reference/GRAPHICS
