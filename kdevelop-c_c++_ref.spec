@@ -7,11 +7,12 @@ License:	GPL
 Group:		Documentation
 Vendor:		Sandy Meier <smeier@rz.uni-potsdam.de>
 Source0:	ftp://ftp.ee.fhm.edu/pub/unix/ide/KDevelop/c_cpp_reference-%{version}.tar.gz
+# Source0-md5:	b096b1a6a69bdbcb8072d6ce2e3833c1
 URL:		http://www.cs.uni-potsdam.de/~smeier/kdevelop/
 Requires:	kdevelop
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define         _htmldir        /usr/share/doc/kde/HTML
+%define		_htmldir	/usr/share/doc/kde/HTML
 
 %description
 KDevelop is an easy to use IDE (Intergrated Development Enviroment)
