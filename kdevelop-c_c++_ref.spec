@@ -11,7 +11,6 @@ URL:		http://www.cs.uni-potsdam.de/~smeier/kdevelop/
 Requires:	kdevelop
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define         _prefix         /usr/X11R6
 %define         _htmldir        /usr/share/doc/kde/HTML
 
 %description
