@@ -5,9 +5,6 @@ Version:	0.1
 Release:	1
 License:	GPL
 Group:		Documentation
-Group(de):	Dokumentation
-Group(es):	Documentación
-Group(pl):	Dokumentacja
 Vendor:		Sandy Meier <smeier@rz.uni-potsdam.de>
 Source0:	%{name}-%{version}.tar.gz
 URL:		http://www.cs.uni-potsdam.de/~smeier/kdevelop/
