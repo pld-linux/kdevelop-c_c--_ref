@@ -8,7 +8,7 @@ Vendor:		Sandy Meier <smeier@rz.uni-potsdam.de>
 Source:		%{name}-%{version}.tar.gz
 URL:		http://www.cs.uni-potsdam.de/~smeier/kdevelop/
 Requires:	kdevelop
-BuildRoot:	/tmp/%{name}-%{version}-root
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 KDevelop is an easy to use IDE (Intergrated Development Enviroment) for
