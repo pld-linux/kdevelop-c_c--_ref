@@ -1,22 +1,14 @@
-%define name kdevelop-c_c++_ref
-%define version 0.1
-%define release 1
-%define prefix /opt/kde
-
-%define builddir $RPM_BUILD_DIR/%{name}-%{version}
-
-Summary: KDevelop-specific C and C++ reference HTML files
-Name: %{name}
-Version: %{version}
-Release: %{release}
-Group: X11/KDE/Development
-Copyright: GPL
-Vendor: Sandy Meier <smeier@rz.uni-potsdam.de>
-Packager: Troy Engel <tengel@sonic.net>
-Source: %{name}-%{version}.tar.gz
-URL: http://www.cs.uni-potsdam.de/~smeier/kdevelop/
-Requires: kdevelop
-BuildRoot: /tmp/build-%{name}-%{version}
+Summary:	KDevelop-specific C and C++ reference HTML files
+Name:		kdevelop-c_c++_ref
+Version:	0.1
+Release:	1
+Copyright:	GPL
+Group:		X11/KDE/Development
+Vendor:		Sandy Meier <smeier@rz.uni-potsdam.de>
+Source:		%{name}-%{version}.tar.gz
+URL:		http://www.cs.uni-potsdam.de/~smeier/kdevelop/
+Requires:	kdevelop
+BuildRoot:	/tmp/%{name}-%{version}-root
 
 %description
 KDevelop is an easy to use IDE (Intergrated Development Enviroment) for
@@ -27,7 +19,7 @@ kdevelop, as written by Martin Leslie. The original files have been
 rearranged to meet our needs.
 
 %prep
-%setup
+%setup -q
 
 %build
 
@@ -38,8 +30,12 @@ cp -R * $RPM_BUILD_ROOT%{prefix}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
-rm -rf %{builddir}
 
 %files
 %defattr(-,root,root)
 %{prefix}/share/doc/HTML/en/kdevelop/*
+
+%changelog                                               
+* Sat Jul 10 1999
+  []
+- based on spec written by Troy Engel <tengel@sonic.net>.
