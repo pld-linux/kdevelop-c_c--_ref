@@ -9,6 +9,8 @@ License:	GPL
 Group:		Documentation
 Source0:	ftp://ftp.ee.fhm.edu/pub/unix/ide/KDevelop/c_cpp_reference-%{version}.tar.bz2
 # Source0-md5:	3b9c51d73d2622ab51ae9d109c38bd61
+Source1:	%{name}-contrib_snip_index.html
+Patch0:		%{name}-broken_links.patch
 URL:		http://www.kdevelop.org
 BuildRequires:	code2html >= 0.9.1
 Requires:	kdevelop
@@ -37,6 +39,7 @@ zosta³y dostosowane do u¿ytku z kdevelopem.
 
 %prep
 %setup -q -n c_cpp_reference-%{version}
+%patch0 -p1
 
 %build
 
@@ -56,23 +59,24 @@ do
 %{__perl} -pi -e 's/(href=.+\.C)(\"|>)/$1\.html$2/i;' $a
 %{__perl} -pi -e 's/(href=.+\.cc)(\"|>)/$1\.html$2/i;' $a
 %{__perl} -pi -e 's/(href=.+\.cpp)(\"|>)/$1\.html$2/i;' $a
-%{__perl} -pi -e 's/(href=\".+\.CC)(\"|>)/$1\.html$2/i;' $a
-%{__perl} -pi -e 's/(href=\".+\.h)(\"|>)/$1\.html$2/i;' $a
-%{__perl} -pi -e 's/(href=\".+\.asm)(\"|>)/$1\.html$2/i;' $a
+%{__perl} -pi -e 's/(href=.+\.CC)(\"|>)/$1\.html$2/i;' $a
+%{__perl} -pi -e 's/(href=.+\.h)(\"|>)/$1\.html$2/i;' $a
+%{__perl} -pi -e 's/(href=.+\.asm)(\"|>)/$1\.html$2/i;' $a
 done
 
-for a in `find . -type f 		\
-	-name "*.c"					\
-    -or -name "*.C"				\
-    -or -name "*.cc"			\
-	-or -name "*.CC"			\
-	-or -name "*.cpp"			\
-	-or -name "*.asm"			\
-	-or -name "*.h"				`	
+for a in `find . -type f \
+	-name "*.c"	\
+	-or -name "*.cc" \
+	-or -name "*.C" \
+	-or -name "*.CC" \
+	-or -name "*.asm" \
+	-or -name "*.h" `	
 do
 	%{__code2html} $a $a.html
-	rm -f $a
 done
+
+install %{SOURCE1} \
+	$RPM_BUILD_ROOT%{_destinationdir}/reference/C/CONTRIB/SNIP/index.html
 
 %clean
 rm -rf $RPM_BUILD_ROOT
