@@ -34,8 +34,3 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(-,root,root)
 %{prefix}/share/doc/HTML/en/kdevelop/*
-
-%changelog                                               
-* Sat Jul 10 1999
-  []
-- based on spec written by Troy Engel <tengel@sonic.net>.
