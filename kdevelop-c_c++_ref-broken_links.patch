@@ -1,0 +1,23 @@
+--- c_cpp_reference-2.0.2.orig/reference/C/EXAMPLES/examples.html	Fri Dec 14 16:58:13 2001
++++ c_cpp_reference-2.0.2/reference/C/EXAMPLES/examples.html	Wed Oct  8 23:20:34 2003
+@@ -134,7 +134,7 @@
+ <img SRC="whiteball.gif" ALT="o" ></dt>
+ 
+ <dd>
+-<a href="../CONTRIB/SNIP/">Bob Stouts 'Snippets'.</a></dd>
++<a href="../CONTRIB/SNIP/index.html">Bob Stouts 'Snippets'.</a></dd>
+ </dl>
+ 
+ <hr>
+ 
+--- c_cpp_reference-2.0.2.orig/reference/C/SYNTAX/syntax_p.html	Fri Dec 14 16:58:14 2001
++++ c_cpp_reference-2.0.2/reference/C/SYNTAX/syntax_p.html	Thu Oct  9 00:20:39 2003
+@@ -84,7 +84,7 @@
+ <a href="functions.html">Functions - passing and returning arguments.</a></li>
+ 
+ <li>
+-<a href="../FUNCTIONS/funcref.html">Function Quick Reference.</a></li>
++<a href="../FUNCTIONS/funcref.htm">Function Quick Reference.</a></li>
+ </ul>
+ 
+ <hr>
