@@ -1,4 +1,3 @@
-# TODO: some directories with examples need html indexes
 Summary:	KDevelop-specific C and C++ reference HTML files
 Summary(pl):	Dokumentacja C i C++ w HTML dla KDevelopa
 Name:		kdevelop-c_c++_ref
@@ -21,7 +20,7 @@ BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define	_destinationdir	%{_docdir}/kde/HTML/en/kdevelop
-%define	__code2html	/usr/bin/code2html
+%define	__code2html	"/usr/bin/code2html -v --fallback=plain"
 
 %description
 KDevelop is an easy to use IDE (Intergrated Development Enviroment)
@@ -50,34 +49,35 @@ zosta³y dostosowane do u¿ytku z kdevelopem.
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_destinationdir}/
 find $RPM_BUILD_DIR/c_cpp_reference-%{version}/reference -name "Makefile.*" \
-	| xargs rm -f 
+	| xargs rm -f
 cp -Rf $RPM_BUILD_DIR/c_cpp_reference-%{version}/reference \
 		$RPM_BUILD_ROOT%{_destinationdir}/
 
-# "htmlization"
+# "htmlization":
 cd $RPM_BUILD_ROOT%{_destinationdir}/reference
 for a in `find . -type f -name "*.htm*"`
 do
-%{__perl} -pi -e 's/(href=.+\.c)(\"|>)/$1\.html$2/i;' $a
-%{__perl} -pi -e 's/(href=.+\.C)(\"|>)/$1\.html$2/i;' $a
-%{__perl} -pi -e 's/(href=.+\.cc)(\"|>)/$1\.html$2/i;' $a
-%{__perl} -pi -e 's/(href=.+\.cpp)(\"|>)/$1\.html$2/i;' $a
-%{__perl} -pi -e 's/(href=.+\.CC)(\"|>)/$1\.html$2/i;' $a
-%{__perl} -pi -e 's/(href=.+\.h)(\"|>)/$1\.html$2/i;' $a
-%{__perl} -pi -e 's/(href=.+\.asm)(\"|>)/$1\.html$2/i;' $a
+%{__perl} -pi -e 's/(href=.+\.c)(\"|>)/$1\.html$2/i;'	"$a"
+%{__perl} -pi -e 's/(href=.+\.C)(\"|>)/$1\.html$2/i;'	"$a"
+%{__perl} -pi -e 's/(href=.+\.cc)(\"|>)/$1\.html$2/i;'	"$a"
+%{__perl} -pi -e 's/(href=.+\.cpp)(\"|>)/$1\.html$2/i;'	"$a"
+%{__perl} -pi -e 's/(href=.+\.CC)(\"|>)/$1\.html$2/i;'	"$a"
+%{__perl} -pi -e 's/(href=.+\.h)(\"|>)/$1\.html$2/i;'	"$a"
+%{__perl} -pi -e 's/(href=.+\.asm)(\"|>)/$1\.html$2/i;'	"$a"
 done
 
-for a in `find . -type f \
-	-name "*.c"	\
-	-or -name "*.cc" \
-	-or -name "*.C" \
-	-or -name "*.CC" \
-	-or -name "*.asm" \
-	-or -name "*.h" `	
+for a in `find . -type f	\
+	-name "*.c"		\
+	-or -name "*.cc"	\
+	-or -name "*.C"		\
+	-or -name "*.CC"	\
+	-or -name "*.asm"	\
+	-or -name "*.h"		`
 do
-	%{__code2html} $a $a.html
+	"%{__code2html}" "$a" "$a.html"
 done
 
+# adds html indexes for "htmlized" examples:
 install %{SOURCE1} \
 	$RPM_BUILD_ROOT%{_destinationdir}/reference/C/CONTRIB/SNIP/index.html
 install %{SOURCE2} \
@@ -86,13 +86,13 @@ install %{SOURCE3} \
 	$RPM_BUILD_ROOT%{_destinationdir}/reference/C/CONTRIB/OR_PRACTICAL_C/index.html
 install %{SOURCE4} \
 	$RPM_BUILD_ROOT%{_destinationdir}/reference/C/CONTRIB/OR_USING_C/index.html
-	
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%files 
+%files
 %defattr(644,root,root,755)
-%doc AUTHORS INSTALL
+%doc AUTHORS
 %{_docdir}/kde/HTML/en/kdevelop/reference/C/*
 %{_docdir}/kde/HTML/en/kdevelop/reference/CPLUSPLUS
 %{_docdir}/kde/HTML/en/kdevelop/reference/GRAPHICS
