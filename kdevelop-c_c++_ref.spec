@@ -1,3 +1,4 @@
+# TODO: some directories with examples need html indexes
 Summary:	KDevelop-specific C and C++ reference HTML files
 Summary(pl):	Dokumentacja C i C++ w HTML dla KDevelopa
 Name:		kdevelop-c_c++_ref
@@ -9,10 +10,12 @@ Group:		Documentation
 Source0:	ftp://ftp.ee.fhm.edu/pub/unix/ide/KDevelop/c_cpp_reference-%{version}.tar.bz2
 # Source0-md5:	3b9c51d73d2622ab51ae9d109c38bd61
 URL:		http://www.kdevelop.org
-BuildRequires:	autoconf, automake, code2html
+BuildRequires:	code2html >= 0.9.1
 Requires:	kdevelop
+BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
+%define	_destinationdir	%{_docdir}/kde/HTML/en/kdevelop
 %define	__code2html	/usr/bin/code2html
 
 %description
@@ -36,37 +39,40 @@ zosta³y dostosowane do u¿ytku z kdevelopem.
 %setup -q -n c_cpp_reference-%{version}
 
 %build
-rm -f missing
-%{__aclocal}
-%{__autoconf}
-%{__automake}
-%configure
-%{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
+install -d $RPM_BUILD_ROOT%{_destinationdir}/
+find $RPM_BUILD_DIR/c_cpp_reference-%{version}/reference -name "Makefile.*" \
+	| xargs rm -f 
+cp -Rf $RPM_BUILD_DIR/c_cpp_reference-%{version}/reference \
+		$RPM_BUILD_ROOT%{_destinationdir}/
 
-%{__make} install \
-	DESTDIR=$RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{_docdir}/kde
-mv $RPM_BUILD_ROOT%{_docdir}/HTML $RPM_BUILD_ROOT%{_docdir}/kde/
+# "htmlization"
+cd $RPM_BUILD_ROOT%{_destinationdir}/reference
+for a in `find . -type f -name "*.htm*"`
+do
+%{__perl} -pi -e 's/(href=.+\.c)(\"|>)/$1\.html$2/i;' $a
+%{__perl} -pi -e 's/(href=.+\.C)(\"|>)/$1\.html$2/i;' $a
+%{__perl} -pi -e 's/(href=.+\.cc)(\"|>)/$1\.html$2/i;' $a
+%{__perl} -pi -e 's/(href=.+\.cpp)(\"|>)/$1\.html$2/i;' $a
+%{__perl} -pi -e 's/(href=\".+\.CC)(\"|>)/$1\.html$2/i;' $a
+%{__perl} -pi -e 's/(href=\".+\.h)(\"|>)/$1\.html$2/i;' $a
+%{__perl} -pi -e 's/(href=\".+\.asm)(\"|>)/$1\.html$2/i;' $a
+done
 
-cd $RPM_BUILD_ROOT%{_docdir}/kde/HTML/en/kdevelop/reference
- for a in `find . -type f -name "*.htm*"`
- do 
-	%{__perl} -pi -e 's/(href=\".*\.c)\"/$1\.html\"/i;' $a
- 	%{__perl} -pi -e 's/(href=\".*\.cc)\"/$1\.html\"/i;' $a
- done
- for a in `find . -type f -name "*.c"`
- do
- 	%{__code2html} $a $a.html
-	rm -f $a
- done
- for a in `find . -type f -name "*.cc"`
- do
+for a in `find . -type f 		\
+	-name "*.c"					\
+    -or -name "*.C"				\
+    -or -name "*.cc"			\
+	-or -name "*.CC"			\
+	-or -name "*.cpp"			\
+	-or -name "*.asm"			\
+	-or -name "*.h"				`	
+do
 	%{__code2html} $a $a.html
 	rm -f $a
- done
+done
 
 %clean
 rm -rf $RPM_BUILD_ROOT
