@@ -32,7 +32,7 @@ kdevelop, as written by Martin Leslie. The original files have been
 rearranged to meet our needs.
 
 %description -l pl
-KDevelop jest prostym w u¿yciu IDE (zintegrownym ¶rodowiskiem
+KDevelop jest prostym w u¿yciu IDE (zintegrowanym ¶rodowiskiem
 programistycznym) dla KDE/Unix/X11.
 
 Ten pakiet dostarcza dokumentacjê C (w wersji 1.08) oraz C++ (0.1) do
