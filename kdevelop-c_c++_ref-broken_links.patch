@@ -1,0 +1,90 @@
+diff -urN reference.orig/C/CONTRIB/intro.html reference/C/CONTRIB/intro.html
+--- reference.orig/C/CONTRIB/intro.html	Thu Feb 24 23:58:04 2000
++++ reference/C/CONTRIB/intro.html	Thu Oct  9 21:25:33 2003
+@@ -124,7 +124,7 @@
+ <dt><h2>Items of interest from the net.</h2>
+ 
+ <dt><img src="../../GRAPHICS/whiteball.gif" alt="o">
+-<dd><a href="SNIP/">  Snippets - program examples.</a> Compiled by Bob Stout.
++<dd><a href="SNIP/index.html">  Snippets - program examples.</a> Compiled by Bob Stout.
+ <p>
+ 
+ <dt><img src="../../GRAPHICS/whiteball.gif" alt="o">
+@@ -156,9 +156,9 @@
+ </a>
+ <dd>Copies of the programs provided in the following O'Reilly Nutshell books.
+ <ul>
+-<li> <a href="OR_USING_C/">Using C examples.</a>
++<li> <a href="OR_USING_C/index.html">Using C examples.</a>
+ 
+-<li> <a href="OR_PRACTICAL_C/">Practical C.</a>
++<li> <a href="OR_PRACTICAL_C/index.html">Practical C.</a>
+ </ul>
+ </dl>
+ 
+diff -urN reference.orig/C/EXAMPLES/examples.html reference/C/EXAMPLES/examples.html
+--- reference.orig/C/EXAMPLES/examples.html	Fri Dec 14 16:58:13 2001
++++ reference/C/EXAMPLES/examples.html	Thu Oct  9 21:28:58 2003
+@@ -122,19 +122,19 @@
+ <img SRC="whiteball.gif" ALT="o" ></dt>
+ 
+ <dd>
+-<a href="../CONTRIB/OREILLY_USING.C/">O'Reillys' Using C examples.</a></dd>
++<a href="../CONTRIB/OR_USING_C/index.html">O'Reillys' Using C examples.</a></dd>
+ 
+ <dt>
+ <img SRC="whiteball.gif" ALT="o" ></dt>
+ 
+ <dd>
+-<a href="../CONTRIB/OREILLY_PRACTICAL.C/">O'Reillys' Practical C examples.</a></dd>
++<a href="../CONTRIB/OR_PRACTICAL_C/index.html">O'Reillys' Practical C examples.</a></dd>
+ 
+ <dt>
+ <img SRC="whiteball.gif" ALT="o" ></dt>
+ 
+ <dd>
+-<a href="../CONTRIB/SNIP/">Bob Stouts 'Snippets'.</a></dd>
++<a href="../CONTRIB/SNIP/index.html">Bob Stouts 'Snippets'.</a></dd>
+ </dl>
+ 
+ <hr>
+diff -urN reference.orig/C/SYNTAX/syntax_p.html reference/C/SYNTAX/syntax_p.html
+--- reference.orig/C/SYNTAX/syntax_p.html	Fri Dec 14 16:58:14 2001
++++ reference/C/SYNTAX/syntax_p.html	Thu Oct  9 00:20:39 2003
+@@ -84,7 +84,7 @@
+ <a href="functions.html">Functions - passing and returning arguments.</a></li>
+ 
+ <li>
+-<a href="../FUNCTIONS/funcref.html">Function Quick Reference.</a></li>
++<a href="../FUNCTIONS/funcref.htm">Function Quick Reference.</a></li>
+ </ul>
+ 
+ <hr>
+diff -urN reference.orig/CPLUSPLUS/cref.html reference/CPLUSPLUS/cref.html
+--- reference.orig/CPLUSPLUS/cref.html	Fri Feb 25 00:10:06 2000
++++ reference/CPLUSPLUS/cref.html	Thu Oct  9 21:16:04 2003
+@@ -3,7 +3,7 @@
+ </head>
+ <body bgcolor="#cccccc">
+ <font color=brown>
+-<Title>C++ Programming Reference</title>
++<Title>C++ Programming Reference.</title>
+ <hr>
+ <center>
+ <h1>C++ Programming Reference. </h1>
+@@ -26,7 +26,7 @@
+ <a href="SYNTAX/syntax.htm"> C++ Syntax</a>
+ 
+ <dt><img src="../GRAPHICS/whiteball.gif" alt="o">
+-<a href="EXAMPLES/"> C++ Example programs</a>
++<a href="EXAMPLES/index.html"> C++ Example programs</a>
+ 
+ <dt><img src="../GRAPHICS/whiteball.gif" alt="o">
+ <a href="../C/PROBLEMS/problems.html">  C programming problems.</a>
+@@ -74,4 +74,4 @@
+ 01-Oct-98</address>
+ </font>
+ </body>
+-</html>
+\ No newline at end of file
++</html>
