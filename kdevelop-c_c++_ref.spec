@@ -9,7 +9,10 @@ License:	GPL
 Group:		Documentation
 Source0:	ftp://ftp.ee.fhm.edu/pub/unix/ide/KDevelop/c_cpp_reference-%{version}.tar.bz2
 # Source0-md5:	3b9c51d73d2622ab51ae9d109c38bd61
-Source1:	%{name}-contrib_snip_index.html
+Source1:	%{name}-snip_ex_index.html
+Source2:	%{name}-c++_ex_index.html
+Source3:	%{name}-OR_PRACTICAL_C_index.html
+Source4:	%{name}-OR_USING_C_index.html
 Patch0:		%{name}-broken_links.patch
 URL:		http://www.kdevelop.org
 BuildRequires:	code2html >= 0.9.1
@@ -39,7 +42,7 @@ zosta³y dostosowane do u¿ytku z kdevelopem.
 
 %prep
 %setup -q -n c_cpp_reference-%{version}
-%patch0 -p1
+%patch0 -p0
 
 %build
 
@@ -77,7 +80,13 @@ done
 
 install %{SOURCE1} \
 	$RPM_BUILD_ROOT%{_destinationdir}/reference/C/CONTRIB/SNIP/index.html
-
+install %{SOURCE2} \
+	$RPM_BUILD_ROOT%{_destinationdir}/reference/CPLUSPLUS/EXAMPLES/index.html
+install %{SOURCE3} \
+	$RPM_BUILD_ROOT%{_destinationdir}/reference/C/CONTRIB/OR_PRACTICAL_C/index.html
+install %{SOURCE4} \
+	$RPM_BUILD_ROOT%{_destinationdir}/reference/C/CONTRIB/OR_USING_C/index.html
+	
 %clean
 rm -rf $RPM_BUILD_ROOT
 
