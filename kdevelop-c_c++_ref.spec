@@ -15,6 +15,7 @@ Source4:	%{name}-OR_USING_C_index.html
 Patch0:		%{name}-broken_links.patch
 URL:		http://www.kdevelop.org
 BuildRequires:	code2html >= 0.9.1
+BuildRequires:	perl-base
 Requires:	kdevelop
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
