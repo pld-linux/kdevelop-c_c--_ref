@@ -1,5 +1,5 @@
 Summary:	KDevelop-specific C and C++ reference HTML files
-Summary(pl):	Dokumentacja C i C++ w HTML dla KDevelopa
+Summary(pl.UTF-8):   Dokumentacja C i C++ w HTML dla KDevelopa
 Name:		kdevelop-c_c++_ref
 Version:	0.1
 Release:	1
@@ -20,13 +20,13 @@ This package provides a C (v1.08) and C++ (0.1) reference from within
 kdevelop, as written by Martin Leslie. The original files have been
 rearranged to meet our needs.
 
-%description -l pl
-KDevelop jest prostym w uøyciu IDE (zintegrownym ∂rodowiskiem
+%description -l pl.UTF-8
+KDevelop jest prostym w u≈ºyciu IDE (zintegrownym ≈õrodowiskiem
 programistycznym) dla KDE/Unix/X11.
 
-Ten pakiet dostarcza dokumentacjÍ C (w wersji 1.08) oraz C++ (0.1) do
-uøywania z kdevelopem, napisan± przez Martina Leslie. Oryginalne pliki
-zosta≥y dostosowane do uøytku z kdevelopem.
+Ten pakiet dostarcza dokumentacjƒô C (w wersji 1.08) oraz C++ (0.1) do
+u≈ºywania z kdevelopem, napisanƒÖ przez Martina Leslie. Oryginalne pliki
+zosta≈Çy dostosowane do u≈ºytku z kdevelopem.
 
 %prep
 %setup -q
