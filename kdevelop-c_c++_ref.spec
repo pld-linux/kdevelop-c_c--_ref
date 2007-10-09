@@ -24,7 +24,7 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %define	__code2html	"/usr/bin/code2html -v --fallback=plain"
 
 %description
-KDevelop is an easy to use IDE (Intergrated Development Enviroment)
+KDevelop is an easy to use IDE (Intergrated Development Environment)
 for KDE/Unix/X11. At the moment there are only unstable
 alpha-versions.
 
